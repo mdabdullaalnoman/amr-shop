@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import useAuth from '../Context/useAuth';
 import './Header.css';
 
 const Header = () => {
+    const {handleSignOut , user} = useAuth();
+
     return (
 
         <header id="home">
@@ -45,13 +48,20 @@ const Header = () => {
                     <Link to="/home">Home</Link>
                     <Link to="/category">Category</Link>
                     <Link to="/mobile-collection">Product</Link>
-                    <Link to="/deal">Deal</Link>
-                    <Link to="/login">Login</Link>
+                    <Link to="/shiping">Shiping</Link>
+                    {
+                        user.displayName
+                         ?
+                         <Link to="/home" onClick={handleSignOut}> Logout </Link> 
+                         : 
+                         <Link to="/login">Login</Link>
+                    }
                 </nav>
 
                 <div className="icons">
                     <Link to="/home" className="fas fa-shopping-cart"></Link>
                     <Link to="/home" className="fas fa-heart"></Link>
+                    <Link to="/home">{user?.displayName}</Link>
                     <Link to="/home" className="fas fa-user-circle"></Link>
                 </div>
             </div>

@@ -6,9 +6,27 @@ import { FaGoogle } from "@react-icons/all-files/fa/FaGoogle";
 import { FaTwitter } from "@react-icons/all-files/fa/FaTwitter";
 import { IoArrowBackOutline } from "react-icons/io5";
 import './Login.css';
+import useAuth from '../Context/useAuth';
+import { useHistory, useLocation } from 'react-router';
 
 
 const Login = () => {
+    const { handleGoogleSignIn, message } = useAuth();
+    const location = useLocation();
+    const history = useHistory();
+
+    const handleGoogleLogin = () => {
+        handleGoogleSignIn()
+            .then((result) => {
+                history.push(location.state?.from || '/')
+                console.log(result.user);
+            })
+            .catch((error) => {
+                console.log(error.message)
+            });
+    }
+    console.log(location.state);
+
     // back button working -----------------
     const goBack = () => {
         window.history.go(-1)
@@ -29,7 +47,7 @@ const Login = () => {
                     </div>
                     <div className="password">
                         <label htmlFor="password">Password</label><br />
-                        <input  type="password" name="password" id="password" placeholder="password" autocomplete="off" required />
+                        <input type="password" name="password" id="password" placeholder="password" autoComplete="off" required />
                     </div>
 
 
@@ -46,9 +64,9 @@ const Login = () => {
                         <button type="submit">login</button>
                     </div>
                 </form>
-                <p className="message"> message</p>
+                <p className="message"> {message}</p>
                 <div className="icons">
-                    <FaGoogle  className="google-icon" />
+                    <FaGoogle onClick={handleGoogleLogin} className="google-icon" />
                     <FaFacebook className="facebook-icon" />
                     <FaGithub className="github-icon" />
                     <FaTwitter className="twitter-icon" />

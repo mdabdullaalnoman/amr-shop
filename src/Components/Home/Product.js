@@ -5,8 +5,6 @@ import './Product.css';
 const Product = () => {
     const [product, setProduct] = useState([]);
     const { image } = product;
-    console.log(product);
-    console.log(image);
     useEffect(() => {
         fetch('https://fakestoreapi.com/products')
             .then(res => res.json())
@@ -19,21 +17,24 @@ const Product = () => {
 
     return (
         <section>
-            <h1 class="sari-colection">Sari Colections</h1>
+            <h1 className="sari-colection">Products</h1>
             <div className="sari-warper">
                 {
+                    !product.length
+                    ?
+                    <div style={{textAlign:'center' , fontSize:'16px'}}>
+                        <iframe src="https://giphy.com/embed/xTk9ZvMnbIiIew7IpW" width="100" height="100" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p>Loading...</p> 
+                    </div>
+                    :   
                     product.map(pd =>
-
-
-
-                        <div className="sari-warper">
+                        <div className="sari-warper" key={pd.description}>
                             <div className="sari-card">
                                 <div className="sari-img">
                                     <img src={pd.image} alt="sari" />
                                     <div className="card-hover-icon">
-                                        <Link href="" className="fas fa-shopping-cart nav-link"></Link>
-                                        <Link href="" className="fas fa-heart"></Link>
-                                        <Link href="" className="fas fa-share"></Link>
+                                        <Link to="/home" className="fas fa-shopping-cart nav-link"></Link>
+                                        <Link to="/home" className="fas fa-heart"></Link>
+                                        <Link to="/home" className="fas fa-share"></Link>
                                     </div>
                                 </div>
                                 <div className="sari-content">
