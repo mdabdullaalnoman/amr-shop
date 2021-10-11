@@ -4,21 +4,25 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import Home from './Componets/Home';
-import NoMatch from './Componets/NoMatch';
+import Home from './Components/Home/Home';
+import Login from './Components/Login/Login';
+import NotFound from './Components/NotFound/NotFound';
 
 const App = () => {
   return (
     <Router>
       <Switch>
         <Route exact path="/">
-          <Home/>
+          <Home />
         </Route>
         <Route path="/home">
-          <Home/>
+          <Home />
+        </Route>
+        <Route path="/login">
+          <Login />
         </Route>
         <Route exact path="*">
-          <NoMatch/>
+          <NotFound />
         </Route>
       </Switch>
     </Router>
