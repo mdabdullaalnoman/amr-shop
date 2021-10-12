@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useAuth from '../Context/useAuth';
 import './Header.css';
@@ -6,6 +6,11 @@ import './Header.css';
 const Header = () => {
     const {handleSignOut , user} = useAuth();
 
+    // toggle active class on menubar-------------------------------
+    const [isActive, setActive] = useState(false);
+    const toggleClass = () => {
+      setActive(!isActive);
+    }
     return (
 
         <header id="home">
@@ -13,16 +18,14 @@ const Header = () => {
             <div className="header-1">
                 <div className="share">
                     <span>follow us:</span>
-                    {/* <a target="_blank" href="https://www.facebook.com/noman.apparel.4003" className="fab fa-facebook"></a>
-                    <a target="_blank" href="https://www.instagram.com/developer_noman/" className="fab fa-twitter"></a>
-                    <a target="_blank" href="https://www.instagram.com/developer_noman/" className="fab fa-instagram"></a>
-                    <a target="_blank" href="https://www.linkedin.com/in/abdulla-al-noman-0701171ba/"
-                        className="fab fa-linkedin"></a> */}
+                    <Link className="fab fa-facebook" to={{ pathname: "https://www.facebook.com/noman.apparel.4003" }} target="_blank" />
+                    <Link className="fab fa-twitter" to={{ pathname: "https://www.facebook.com/noman.apparel.4003" }} target="_blank" />
+                    <Link className="fab fa-linkedin" to={{ pathname: "https://www.facebook.com/noman.apparel.4003" }} target="_blank" />
                 </div>
 
-                <div className="share">
+                <div className="header-contract share">
                     <span>Call us:</span>
-                    <a href="/notFound"> +88 01797701620</a>
+                    <Link to="/notFound"> +88 01797701620</Link>
                 </div>
 
             </div>
@@ -30,7 +33,7 @@ const Header = () => {
             <div className="header-2">
                 {/* Header ---- 2 */}
 
-                <a href="#home" className="logo"><i className="fas fa-shipping-fast"></i> BD-SHOP</a>
+                <Link to="/home" className="logo"><i className="fas fa-shipping-fast"></i> BD-SHOP</Link>
 
                 <form action="" className="search-bar-container">
                     <input type="search" id="search-bar" placeholder="search here..." />
@@ -41,10 +44,10 @@ const Header = () => {
 
             <div className="header-3">
                 {/* Header - 3 */}
+                     
+                <div id="menu-bar" onClick={toggleClass} className={isActive ? 'fas fa-times' : 'fas fa-bars'}></div>
 
-                <div href="" id="menu-bar" className="fas fa-bars"></div>
-
-                <nav className="navbar">
+                <nav className={isActive ? 'navbar active' : 'navbar'}>
                     <Link to="/home">Home</Link>
                     <Link to="/category">Category</Link>
                     <Link to="/mobile-collection">Product</Link>
