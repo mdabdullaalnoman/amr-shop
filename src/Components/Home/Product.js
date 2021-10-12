@@ -22,7 +22,7 @@ const Product = () => {
                     !product.length
                     ?
                     <div style={{textAlign:'center' , fontSize:'16px'}}>
-                        <iframe src="https://giphy.com/embed/xTk9ZvMnbIiIew7IpW" width="100" height="100" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p>Loading...</p> 
+                        <iframe src="https://giphy.com/embed/xTk9ZvMnbIiIew7IpW" width="100" height="100" frameBorder="0" className="giphy-embed" allowFullScreen></iframe><p>Loading...</p> 
                     </div>
                     :   
                     product.map(pd =>

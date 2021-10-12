@@ -7,8 +7,8 @@ import { FaTwitter } from "@react-icons/all-files/fa/FaTwitter";
 import { IoArrowBackOutline } from "react-icons/io5";
 import './Login.css';
 import useAuth from '../Context/useAuth';
-import { useHistory, useLocation } from 'react-router';
-import Link from 'react-dom';
+import { useHistory, useLocation , Link } from 'react-router-dom';
+
 
 
 const Login = () => {
@@ -26,7 +26,6 @@ const Login = () => {
                 console.log(error.message)
             });
     }
-    console.log(location.state);
 
     // back button working -----------------
     const goBack = () => {
