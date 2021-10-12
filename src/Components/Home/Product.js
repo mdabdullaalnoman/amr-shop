@@ -4,7 +4,6 @@ import './Product.css';
 
 const Product = () => {
     const [product, setProduct] = useState([]);
-    const { image } = product;
     useEffect(() => {
         fetch('https://fakestoreapi.com/products')
             .then(res => res.json())

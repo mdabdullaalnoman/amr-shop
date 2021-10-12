@@ -8,6 +8,7 @@ import { IoArrowBackOutline } from "react-icons/io5";
 import './Login.css';
 import useAuth from '../Context/useAuth';
 import { useHistory, useLocation } from 'react-router';
+import Link from 'react-dom';
 
 
 const Login = () => {
@@ -56,7 +57,7 @@ const Login = () => {
                             <input type="checkbox" name="checkbox" id="checkbox" />
                             <label htmlFor="checkbox">Dont have any account !</label>
                         </div>
-                        <a href="#">forgot password</a>
+                        <Link to="/login">forgot password</Link>
                     </div>
 
 
