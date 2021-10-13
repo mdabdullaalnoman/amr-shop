@@ -1,0 +1,11 @@
+.swiper-container-horizontal>.swiper-pagination-bullets.swiper-pagination-bullets-dynamic .swiper-pagination-bullet {
+    background: #e6e8eb;
+    height: 20px;
+    width: 20px;
+}
+.carousel-warp{
+    padding-top: 5rem;
+}
+.slider-img img{
+    width: 100%;
+}
